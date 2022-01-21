@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(
+    to right,
+    rgb(60, 60, 255) 0%,
+    white 37%,
+    white 50%,
+    white 63%,
+    rgb(60, 60, 255) 100%
+  );
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container h1 {
+  margin-bottom: 2rem;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 1rem 6rem 1rem 6rem;
+  font-size: 18px;
+}
+
+.login-form-container .email-container .email-input {
+  position: absolute;
+  top: 9.7rem;
+  left: 37.75rem;
+  margin-left: 0.5rem;
+}
+
+.login-form-container .email-container label {
+  position: absolute;
+  top: 13rem;
+  left: 29.75rem;
+}
+
+.login-form-container input {
+  margin: 3rem 1rem 1rem 1rem;
+  padding: 0.25rem;
+  font-size: 18px;
+  width: 300px;
+}
+
+.login-form-container .button-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.button-container .login-button {
+  padding: 0.5rem;
+  background-color: rgb(75, 75, 255);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  align-self: center;
+  width: 75px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.login-button:hover {
+  background-color: white;
+  color: rgb(75, 75, 255);
+  border: 2px solid rgb(75, 75, 255);
+}
+
+.create-account-modal-button,
+.forgot-your-password-button,
+.login-as-guest-button {
+  margin-top: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.create-account-modal-button:hover,
+.forgot-your-password-button:hover,
+.login-as-guest-button:hover {
+  text-decoration: underline black;
+  color: rgb(75, 75, 255);
+}

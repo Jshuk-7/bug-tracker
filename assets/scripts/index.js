@@ -43,15 +43,25 @@ forgotYourPasswordButton.addEventListener('click', forgotYourPasswordHandler);
 loginAsGuestButton.addEventListener('click', loginAsGuestHandler);
 
 loginContainer.classList.add('login-container');
-pageHeader.textContent = 'Log into your account';
+loginFormContainer.classList.add('login-form-container');
+pageHeader.textContent = 'Login to your account';
 pageHeader.classList.add('page-header');
 emailContainer.classList.add('email-container');
+emailLabel.textContent = 'Email Address:';
+emailInput.placeholder = 'yourEmail@gmail.com';
+emailInput.classList.add('email-input');
 passwordContainer.classList.add('password-container');
+passwordLabel.textContent = 'Password:';
+passwordInput.placeholder = 'Password';
 buttonContainer.classList.add('button-container');
 loginButton.classList.add('login-button');
+loginButton.textContent = 'Login';
 createAccountModalButton.classList.add('create-account-modal-button');
+createAccountModalButton.textContent = 'Create account';
 forgotYourPasswordButton.classList.add('forgot-your-password-button');
+forgotYourPasswordButton.textContent = 'Forgot your password?';
 loginAsGuestButton.classList.add('login-as-guest-button');
+loginAsGuestButton.textContent = 'Login as Guest';
 
 emailContainer.append(emailLabel, emailInput);
 passwordContainer.append(passwordLabel, passwordInput);
