@@ -1,4 +1,5 @@
 // ! Global Variables
+
 const body = document.body;
 const loginContainer = document.createElement('div');
 const loginFormContainer = document.createElement('div');
@@ -18,54 +19,76 @@ const createAccountModalButton = document.createElement('button');
 const forgotYourPasswordButton = document.createElement('button');
 const loginAsGuestButton = document.createElement('button');
 
+// ! Functions
+
 const createAccountModal = () => {
   const modalDiv = document.createElement('div');
+  const modalHeaderDiv = document.createElement('div');
   const modalContentDiv = document.createElement('div');
   const closeModalButton = document.createElement('span');
-
   const formContainer = document.createElement('div');
-
   const nameContainer = document.createElement('div');
   const nameLabel = document.createElement('label');
   const nameInput = document.createElement('input');
-
-  const emailContainer = document.createElement('div');
+  const emailModalContainer = document.createElement('div');
   const emailLabel = document.createElement('label');
   const emailInput = document.createElement('input');
-
-  const passwordContainer = document.createElement('div');
+  const passwordModalContainer = document.createElement('div');
   const passwordModalLabel = document.createElement('label');
   const passwordModalInput = document.createElement('input');
-
-  const passwordConfirmContainer = document.createElement('div');
+  const passwordModalConfirmContainer = document.createElement('div');
   const passwordConfirmLabel = document.createElement('label');
   const passwordConfirmInput = document.createElement('input');
-
   const signupButton = document.createElement('button');
 
+  const startAnimateModal = () => {
+    modalDiv.style['animation-name'] = 'animatetop';
+    modalDiv.style['animation-duration'] = '0.4s';
+  };
+
+  const endAnimateModal = () => {
+    modalDiv.style['animation-name'] = 'animatebottom';
+    modalDiv.style['animation-duration'] = '0.4s';
+  };
+
+  const toggleCreateAccountModalVisibility = () => {
+    endAnimateModal();
+    const task = async () => {
+      await new Promise((r) => setTimeout(r, 400));
+      modalDiv.classList.toggle('visible');
+    };
+    task();
+  };
+
+  // signupButton.addEventListener('click', );
+
+  closeModalButton.addEventListener(
+    'click',
+    toggleCreateAccountModalVisibility
+  );
+
   modalDiv.classList.add('modal');
+  modalDiv.classList.add('background-color');
   modalDiv.id = 'myModal';
-  modalDiv.style['z-index'] = 2;
-  modalDiv.style['position'] = 'absolute';
-  modalDiv.style['width'] = '100vw';
-  modalDiv.style['height'] = '100vh';
-  modalDiv.style['background'] =
-    'linear-gradient(to right, rgb(60, 60, 255) 0%, white 37%, white 50%, white 63%, rgb(60, 60, 255) 100%';
+  modalHeaderDiv.classList.add('modal-header');
+  modalHeaderDiv.innerHTML = `<h2>Create Account</h2>`;
   modalContentDiv.classList.add('modal-content');
-  closeModalButton.classList.add('close');
+  closeModalButton.classList.add('close-modal');
   closeModalButton.textContent = 'Already have an account';
   formContainer.classList.add('form-container');
   nameContainer.classList.add('name-container');
   nameLabel.textContent = 'Name:';
   nameInput.placeholder = 'name';
-  emailContainer.classList.add('email-container');
+  emailModalContainer.classList.add('email-modal-container');
   emailLabel.textContent = 'Email Address:';
   emailInput.placeholder = 'yourEmail@example.com';
-  passwordContainer.classList.add('password-container');
+  passwordModalContainer.classList.add('password-modal-container');
   passwordModalLabel.textContent = 'Password:';
   passwordModalInput.type = 'password';
   passwordModalInput.placeholder = '•••••••••';
-  passwordConfirmContainer.classList.add('password-confirm-container');
+  passwordModalConfirmContainer.classList.add(
+    'password-modal-confirm-container'
+  );
   passwordConfirmLabel.textContent = 'Confirm Password:';
   passwordConfirmInput.type = 'password';
   passwordConfirmInput.placeholder = '•••••••••';
@@ -73,19 +96,25 @@ const createAccountModal = () => {
   signupButton.textContent = 'Sign Up';
 
   nameContainer.append(nameLabel, nameInput);
-  emailContainer.append(emailLabel, emailInput);
-  passwordContainer.append(passwordModalLabel, passwordModalInput);
-  passwordConfirmContainer.append(passwordConfirmLabel, passwordConfirmInput);
+  emailModalContainer.append(emailLabel, emailInput);
+  passwordModalContainer.append(passwordModalLabel, passwordModalInput);
+  passwordModalConfirmContainer.append(
+    passwordConfirmLabel,
+    passwordConfirmInput
+  );
   formContainer.append(
     nameContainer,
-    emailContainer,
-    passwordContainer,
-    passwordConfirmContainer,
+    emailModalContainer,
+    passwordModalContainer,
+    passwordModalConfirmContainer,
     signupButton
   );
+
   modalContentDiv.append(formContainer, closeModalButton);
-  modalDiv.appendChild(modalContentDiv);
+  modalDiv.append(modalHeaderDiv, modalContentDiv);
   body.appendChild(modalDiv);
+
+  startAnimateModal();
 };
 
 const forgotYourPasswordModal = () => {};
@@ -118,11 +147,16 @@ const togglePasswordVisibility = () => {
   }
 };
 
+// ! Event Listeners
+
 loginButton.addEventListener('click', loginHandler);
 createAccountModalButton.addEventListener('click', createAccountHandler);
 forgotYourPasswordButton.addEventListener('click', forgotYourPasswordHandler);
 loginAsGuestButton.addEventListener('click', loginAsGuestHandler);
 
+// ! Element Attributes
+
+body.classList.add('background-color');
 loginContainer.classList.add('login-container');
 loginFormContainer.classList.add('login-form-container');
 pageHeader.textContent = 'Login to your account';
@@ -150,6 +184,8 @@ forgotYourPasswordButton.classList.add('forgot-your-password-button');
 forgotYourPasswordButton.textContent = 'Forgot your password?';
 loginAsGuestButton.classList.add('login-as-guest-button');
 loginAsGuestButton.textContent = 'Login as Guest';
+
+// ! Page Layout
 
 emailContainer.append(emailLabel, emailInput);
 passwordVisibilityCheckboxContainer.append(

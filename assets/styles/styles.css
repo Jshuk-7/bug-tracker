@@ -6,6 +6,14 @@
 }
 
 body {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+}
+
+.background-color {
   background: linear-gradient(
     to right,
     rgb(60, 60, 255) 0%,
@@ -14,11 +22,6 @@ body {
     white 63%,
     rgb(60, 60, 255) 100%
   );
-  color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 7rem;
 }
 
 .login-container {
@@ -40,7 +43,7 @@ body {
   align-items: center;
   box-shadow: 10px 10px 10px 10px #888;
   border-radius: 0.5rem;
-  padding: 1rem 6rem 4rem 6rem;
+  padding: 1.25rem 6rem 2rem 6rem;
   font-size: 18px;
 }
 
@@ -73,8 +76,8 @@ body {
 
 .password-vis-checkbox-container input {
   position: absolute;
-  top: 15.75rem;
-  left: 29rem;
+  top: 15.92rem;
+  left: 29.5rem;
 }
 
 .login-form-container .button-container {
@@ -116,4 +119,161 @@ body {
 .login-as-guest-button:hover {
   text-decoration: underline black;
   color: rgb(75, 75, 255);
+}
+
+.modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}
+
+.modal-content {
+  position: absolute;
+  width: 50%;
+  height: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 3;
+}
+
+.modal-header {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 3;
+  text-align: center;
+  box-shadow: 10px 10px 10px 10px #888;
+  border-radius: 0.5rem 0.5rem 0 0;
+  font-size: larger;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 10px 10px 10px 10px #888;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.name-container,
+.email-modal-container,
+.password-modal-container,
+.password-modal-confirm-container {
+  margin: 1rem;
+}
+
+.name-container input {
+  position: relative;
+  left: 3rem;
+  width: 20rem;
+  padding: 0.25rem;
+  font-size: 18px;
+}
+
+.name-container label {
+  position: relative;
+  left: 1.85rem;
+}
+
+.email-modal-container input {
+  position: relative;
+  left: 1.25rem;
+  width: 20rem;
+  padding: 0.25rem;
+  font-size: 18px;
+}
+
+.email-modal-container label {
+  position: relative;
+  left: 0rem;
+}
+
+.password-modal-container input {
+  position: relative;
+  left: 2.25rem;
+  width: 20rem;
+  padding: 0.25rem;
+  font-size: 18px;
+}
+
+.password-modal-container label {
+  position: relative;
+  left: 1rem;
+}
+
+.password-modal-confirm-container input {
+  position: relative;
+  left: 0.35rem;
+  width: 20rem;
+  padding: 0.25rem;
+  font-size: 18px;
+}
+
+.password-modal-confirm-container label {
+  position: relative;
+  left: -0.85rem;
+}
+
+.form-container .signup-button {
+  padding: 0.5rem;
+  background-color: rgb(75, 75, 255);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  align-self: center;
+  width: 180px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 2rem;
+}
+
+.signup-button:hover {
+  background-color: white;
+  color: rgb(75, 75, 255);
+  border: 2px solid rgb(75, 75, 255);
+}
+
+.close-modal {
+  position: absolute;
+  left: 17rem;
+  bottom: -6rem;
+  background-color: white;
+  font-size: 18px;
+}
+
+.close-modal:hover {
+  text-decoration: underline black;
+  color: rgb(75, 75, 255);
+}
+
+.visible {
+  display: none;
+}
+
+@keyframes animatetop {
+  from {
+    top: -400px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatebottom {
+  from {
+    bottom: 0;
+    opacity: 1;
+  }
+  to {
+    bottom: -400px;
+    opacity: 0;
+  }
 }
