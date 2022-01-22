@@ -39,7 +39,11 @@ const createAccountModal = () => {
   const passwordModalConfirmContainer = document.createElement('div');
   const passwordConfirmLabel = document.createElement('label');
   const passwordConfirmInput = document.createElement('input');
-  const signupButton = document.createElement('button');
+  const passwordModalVisibilityCheckboxContainer =
+    document.createElement('div');
+  const passwordModalVisibilityCheckboxLabel = document.createElement('label');
+  const passwordModalVisibilityCheckbox = document.createElement('input');
+  const sendEmailButton = document.createElement('button');
 
   const startAnimateModal = () => {
     modalDiv.style['animation-name'] = 'animatetop';
@@ -60,7 +64,22 @@ const createAccountModal = () => {
     task();
   };
 
-  // signupButton.addEventListener('click', );
+  const toggleCreateAccountPasswordVisibility = () => {
+    if (
+      passwordModalInput.type === 'password' &&
+      passwordConfirmInput.type === 'password'
+    ) {
+      passwordModalInput.type = 'text';
+      passwordConfirmInput.type = 'text';
+      passwordModalVisibilityCheckboxLabel.textContent = 'hide password';
+    } else {
+      passwordModalInput.type = 'password';
+      passwordConfirmInput.type = 'password';
+      passwordModalVisibilityCheckboxLabel.textContent = 'show password';
+    }
+  };
+
+  // sendEmailButton.addEventListener('click', );
 
   closeModalButton.addEventListener(
     'click',
@@ -92,8 +111,15 @@ const createAccountModal = () => {
   passwordConfirmLabel.textContent = 'Confirm Password:';
   passwordConfirmInput.type = 'password';
   passwordConfirmInput.placeholder = '•••••••••';
-  signupButton.classList.add('signup-button');
-  signupButton.textContent = 'Sign Up';
+  passwordModalVisibilityCheckboxContainer.classList.add(
+    'password-modal-vis-checkbox-container'
+  );
+  passwordModalVisibilityCheckbox.type = 'checkbox';
+  passwordModalVisibilityCheckbox.onclick =
+    toggleCreateAccountPasswordVisibility;
+  passwordModalVisibilityCheckboxLabel.textContent = 'show password';
+  sendEmailButton.classList.add('signup-button');
+  sendEmailButton.textContent = 'Sign Up';
 
   nameContainer.append(nameLabel, nameInput);
   emailModalContainer.append(emailLabel, emailInput);
@@ -102,14 +128,18 @@ const createAccountModal = () => {
     passwordConfirmLabel,
     passwordConfirmInput
   );
+  passwordModalVisibilityCheckboxContainer.append(
+    passwordModalVisibilityCheckbox,
+    passwordModalVisibilityCheckboxLabel
+  );
   formContainer.append(
     nameContainer,
     emailModalContainer,
     passwordModalContainer,
     passwordModalConfirmContainer,
-    signupButton
+    passwordModalVisibilityCheckboxContainer,
+    sendEmailButton
   );
-
   modalContentDiv.append(formContainer, closeModalButton);
   modalDiv.append(modalHeaderDiv, modalContentDiv);
   body.appendChild(modalDiv);
@@ -117,7 +147,64 @@ const createAccountModal = () => {
   startAnimateModal();
 };
 
-const forgotYourPasswordModal = () => {};
+const forgotYourPasswordModal = () => {
+  const modalDiv = document.createElement('div');
+  const modalHeaderDiv = document.createElement('div');
+  const modalContentDiv = document.createElement('div');
+  const closeModalButton = document.createElement('span');
+  const formContainer = document.createElement('div');
+  const emailModalContainer = document.createElement('div');
+  const emailLabel = document.createElement('label');
+  const emailInput = document.createElement('input');
+  const sendEmailButton = document.createElement('button');
+
+  const startAnimateModal = () => {
+    modalDiv.style['animation-name'] = 'animatetop';
+    modalDiv.style['animation-duration'] = '0.4s';
+  };
+
+  const endAnimateModal = () => {
+    modalDiv.style['animation-name'] = 'animatebottom';
+    modalDiv.style['animation-duration'] = '0.4s';
+  };
+
+  const toggleForgotYourPasswordModalVisibility = () => {
+    endAnimateModal();
+    const task = async () => {
+      await new Promise((r) => setTimeout(r, 400));
+      modalDiv.classList.toggle('visible');
+    };
+    task();
+  };
+
+  closeModalButton.addEventListener(
+    'click',
+    toggleForgotYourPasswordModalVisibility
+  );
+
+  modalDiv.classList.add('modal');
+  modalDiv.classList.add('background-color');
+  modalDiv.id = 'myModal';
+  modalHeaderDiv.classList.add('modal-header');
+  modalHeaderDiv.innerHTML = `<h2>Reset Password</h2>`;
+  modalContentDiv.classList.add('modal-content');
+  closeModalButton.classList.add('close-modal');
+  closeModalButton.textContent = 'Nevermind I figured it out';
+  closeModalButton.style['bottom'] = '4rem';
+  formContainer.classList.add('form-container');
+  emailModalContainer.classList.add('email-modal-container');
+  emailLabel.textContent = 'Email Address:';
+  emailInput.placeholder = 'yourEmail@example.com';
+  sendEmailButton.classList.add('send-email-button');
+  sendEmailButton.textContent = 'Send Email';
+
+  emailModalContainer.append(emailLabel, emailInput);
+  formContainer.append(emailModalContainer, sendEmailButton);
+  modalContentDiv.append(formContainer, closeModalButton);
+  modalDiv.append(modalHeaderDiv, modalContentDiv);
+  body.appendChild(modalDiv);
+  startAnimateModal();
+};
 
 // const loginAsGuest =
 
@@ -130,7 +217,7 @@ const createAccountHandler = () => {
 };
 
 const forgotYourPasswordHandler = () => {
-  return;
+  forgotYourPasswordModal();
 };
 
 const loginAsGuestHandler = () => {

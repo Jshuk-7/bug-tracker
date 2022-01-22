@@ -71,12 +71,12 @@ body {
   width: fit-content;
   display: flex;
   flex-direction: column;
-  margin-left: 10rem;
+  margin-left: 9rem;
 }
 
 .password-vis-checkbox-container input {
   position: absolute;
-  top: 15.92rem;
+  top: 15.8rem;
   left: 29.5rem;
 }
 
@@ -101,7 +101,7 @@ body {
 .login-button:hover {
   background-color: white;
   color: rgb(75, 75, 255);
-  border: 2px solid rgb(75, 75, 255);
+  border: 1px solid rgb(75, 75, 255);
 }
 
 .create-account-modal-button,
@@ -135,21 +135,23 @@ body {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  z-index: 3;
+  z-index: 4;
 }
 
 .modal-header {
   position: absolute;
+  background-color: rgb(75, 75, 255);
+  color: white;
   width: 50%;
-  height: 50%;
-  top: 50%;
+  height: 4rem;
+  top: 25.95%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  z-index: 3;
   text-align: center;
-  box-shadow: 10px 10px 10px 10px #888;
+  box-shadow: 10px 10px 10px 0 #888;
   border-radius: 0.5rem 0.5rem 0 0;
   font-size: larger;
+  padding: 1rem;
 }
 
 .form-container {
@@ -159,6 +161,7 @@ body {
   align-items: center;
   box-shadow: 10px 10px 10px 10px #888;
   border-radius: 0 0 0.5rem 0.5rem;
+  z-index: 4;
 }
 
 .name-container,
@@ -220,6 +223,11 @@ body {
   left: -0.85rem;
 }
 
+.password-modal-vis-checkbox-container input {
+  position: relative;
+  right: 0.5rem;
+}
+
 .form-container .signup-button {
   padding: 0.5rem;
   background-color: rgb(75, 75, 255);
@@ -233,18 +241,38 @@ body {
   margin: 2rem;
 }
 
+.send-email-button {
+  padding: 0.5rem;
+  background-color: rgb(75, 75, 255);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  align-self: center;
+  width: 180px;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 2rem;
+}
+
+.send-email-button:hover {
+  background-color: white;
+  color: rgb(75, 75, 255);
+  border: 1px solid rgb(75, 75, 255);
+}
+
 .signup-button:hover {
   background-color: white;
   color: rgb(75, 75, 255);
-  border: 2px solid rgb(75, 75, 255);
+  border: 1px solid rgb(75, 75, 255);
 }
 
 .close-modal {
   position: absolute;
   left: 17rem;
   bottom: -6rem;
-  background-color: white;
+  background-color: transparent;
   font-size: 18px;
+  cursor: pointer;
 }
 
 .close-modal:hover {
