@@ -50,8 +50,8 @@ body {
 .login-form-container .email-container .email-input {
   position: absolute;
   top: 9.7rem;
-  left: 37.75rem;
-  margin-left: 0.5rem;
+  left: 36.25rem;
+  margin-left: 2rem;
 }
 
 .login-form-container .email-container label {
@@ -87,15 +87,21 @@ body {
 }
 
 .button-container .login-button {
-  padding: 0.5rem;
+  padding: 1rem;
   background-color: rgb(75, 75, 255);
   color: white;
   border: none;
   border-radius: 0.5rem;
   align-self: center;
-  width: 75px;
+  width: 100px;
   cursor: pointer;
   font-size: 18px;
+  display: flex;
+}
+
+.login-button .fa-sign-in-alt {
+  margin: 0.15rem 0 0 0.5rem;
+  /* font-size: 50px; */
 }
 
 .login-button:hover {
@@ -241,6 +247,10 @@ body {
   margin: 2rem;
 }
 
+.signup-button .fa-user-plus {
+  margin-left: 0.5rem;
+}
+
 .send-email-button {
   padding: 0.5rem;
   background-color: rgb(75, 75, 255);
@@ -252,6 +262,10 @@ body {
   cursor: pointer;
   font-size: 18px;
   margin: 2rem;
+}
+
+.send-email-button .fa-paper-plane {
+  margin-left: 0.5rem;
 }
 
 .send-email-button:hover {
@@ -282,6 +296,43 @@ body {
 
 .visible {
   display: none;
+}
+
+.modal-div-logged-in {
+}
+
+.main-content-logged-in {
+}
+
+.sidebar-logged-in {
+  height: 100vh;
+  width: 3rem;
+  background-color: rgb(75, 75, 255);
+}
+
+.sidebar-button-container {
+}
+
+.toggle-sidebar-button {
+}
+
+.sidebar-buttons {
+}
+
+.alert {
+  padding: 20px;
+  background-color: green;
+  color: white;
+}
+
+.close-alert-button {
+  color: white;
+  float: right;
+  cursor: pointer;
+}
+
+.close-alert-button:hover {
+  color: black;
 }
 
 @keyframes animatetop {

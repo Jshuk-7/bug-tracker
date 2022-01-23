@@ -22,6 +22,8 @@ const loginAsGuestButton = document.createElement('button');
 // ! Functions
 
 const createAccountModal = () => {
+  // ! Create Account Modal Global Variables
+
   const modalDiv = document.createElement('div');
   const modalHeaderDiv = document.createElement('div');
   const modalContentDiv = document.createElement('div');
@@ -31,8 +33,8 @@ const createAccountModal = () => {
   const nameLabel = document.createElement('label');
   const nameInput = document.createElement('input');
   const emailModalContainer = document.createElement('div');
-  const emailLabel = document.createElement('label');
-  const emailInput = document.createElement('input');
+  const emailModalLabel = document.createElement('label');
+  const emailModalInput = document.createElement('input');
   const passwordModalContainer = document.createElement('div');
   const passwordModalLabel = document.createElement('label');
   const passwordModalInput = document.createElement('input');
@@ -44,6 +46,8 @@ const createAccountModal = () => {
   const passwordModalVisibilityCheckboxLabel = document.createElement('label');
   const passwordModalVisibilityCheckbox = document.createElement('input');
   const sendEmailButton = document.createElement('button');
+
+  // ! Functions
 
   const startAnimateModal = () => {
     modalDiv.style['animation-name'] = 'animatetop';
@@ -80,11 +84,14 @@ const createAccountModal = () => {
   };
 
   // sendEmailButton.addEventListener('click', );
+  // ! Event Listeners
 
   closeModalButton.addEventListener(
     'click',
     toggleCreateAccountModalVisibility
   );
+
+  // ! Element Attributes
 
   modalDiv.classList.add('modal');
   modalDiv.classList.add('background-color');
@@ -99,8 +106,8 @@ const createAccountModal = () => {
   nameLabel.textContent = 'Name:';
   nameInput.placeholder = 'name';
   emailModalContainer.classList.add('email-modal-container');
-  emailLabel.textContent = 'Email Address:';
-  emailInput.placeholder = 'yourEmail@example.com';
+  emailModalLabel.textContent = 'Email Address:';
+  emailModalInput.placeholder = 'yourEmail@example.com';
   passwordModalContainer.classList.add('password-modal-container');
   passwordModalLabel.textContent = 'Password:';
   passwordModalInput.type = 'password';
@@ -119,10 +126,12 @@ const createAccountModal = () => {
     toggleCreateAccountPasswordVisibility;
   passwordModalVisibilityCheckboxLabel.textContent = 'show password';
   sendEmailButton.classList.add('signup-button');
-  sendEmailButton.textContent = 'Sign Up';
+  sendEmailButton.innerHTML = 'Sign Up<i class="fas fa-user-plus"></i>';
+
+  // ! Modal Layout
 
   nameContainer.append(nameLabel, nameInput);
-  emailModalContainer.append(emailLabel, emailInput);
+  emailModalContainer.append(emailModalLabel, emailModalInput);
   passwordModalContainer.append(passwordModalLabel, passwordModalInput);
   passwordModalConfirmContainer.append(
     passwordConfirmLabel,
@@ -145,18 +154,24 @@ const createAccountModal = () => {
   body.appendChild(modalDiv);
 
   startAnimateModal();
+
+  // ! End of function
 };
 
 const forgotYourPasswordModal = () => {
+  // ! Forgot Your Password Modal Global Variables
+
   const modalDiv = document.createElement('div');
   const modalHeaderDiv = document.createElement('div');
   const modalContentDiv = document.createElement('div');
   const closeModalButton = document.createElement('span');
   const formContainer = document.createElement('div');
   const emailModalContainer = document.createElement('div');
-  const emailLabel = document.createElement('label');
-  const emailInput = document.createElement('input');
+  const emailModalLabel = document.createElement('label');
+  const emailModalInput = document.createElement('input');
   const sendEmailButton = document.createElement('button');
+
+  // ! Functions
 
   const startAnimateModal = () => {
     modalDiv.style['animation-name'] = 'animatetop';
@@ -177,10 +192,14 @@ const forgotYourPasswordModal = () => {
     task();
   };
 
+  // ! Event Listeners
+
   closeModalButton.addEventListener(
     'click',
     toggleForgotYourPasswordModalVisibility
   );
+
+  // ! Element Attributes
 
   modalDiv.classList.add('modal');
   modalDiv.classList.add('background-color');
@@ -193,22 +212,111 @@ const forgotYourPasswordModal = () => {
   closeModalButton.style['bottom'] = '4rem';
   formContainer.classList.add('form-container');
   emailModalContainer.classList.add('email-modal-container');
-  emailLabel.textContent = 'Email Address:';
-  emailInput.placeholder = 'yourEmail@example.com';
+  emailModalLabel.textContent = 'Email Address:';
+  emailModalInput.placeholder = 'yourEmail@example.com';
   sendEmailButton.classList.add('send-email-button');
-  sendEmailButton.textContent = 'Send Email';
+  sendEmailButton.innerHTML = 'Send Email<i class="fas fa-paper-plane"></i>';
 
-  emailModalContainer.append(emailLabel, emailInput);
+  // ! Modal Layout
+
+  emailModalContainer.append(emailModalLabel, emailModalInput);
   formContainer.append(emailModalContainer, sendEmailButton);
   modalContentDiv.append(formContainer, closeModalButton);
   modalDiv.append(modalHeaderDiv, modalContentDiv);
   body.appendChild(modalDiv);
   startAnimateModal();
+
+  // ! End of function
 };
 
-// const loginAsGuest =
+const loginAlert = () => {
+  const alertContainer = document.createElement('div');
+  const closeAlertButton = document.createElement('span');
 
-const loginHandler = (email) => {
+  alertContainer.classList.add('alert');
+  alertContainer.textContent = 'Successfully Logged In...';
+  closeAlertButton.classList.add('close-alert-button');
+  closeAlertButton.textContent = '&times:';
+  closeAlertButton.onclick = alertContainer.style.display = 'none';
+  alertContainer.appendChild(closeAlertButton);
+  body.append(alertContainer);
+  const task = async () => {
+    await new Promise((r) => setTimeout(r, 5000));
+    body.remove(alertContainer);
+  };
+  task();
+};
+
+const loginAsGuest = () => {
+  // ! Login As Guest Global Variables
+
+  const modalDiv = document.createElement('div');
+  const mainContent = document.createElement('div');
+  const sideBar = document.createElement('div');
+  const sideButtonContainer = document.createElement('div');
+  const toggleSidebarButton = document.createElement('button');
+  const userInfoButton = document.createElement('button');
+  const homeButton = document.createElement('button');
+  const addIssueButton = document.createElement('button');
+  const allIssuesButton = document.createElement('button');
+
+  // ! Functions
+
+  const showLoggedInPage = () => {
+    loginContainer.style['display'] = 'none';
+    const task = async () => {
+      await new Promise((r) => setTimeout(r, 3000));
+      body.classList.remove('background-color');
+    };
+
+    loginAlert();
+    task();
+  };
+
+  const toggleSidebar = () => {
+    sideBar.classList.toggle('small-width');
+  };
+
+  // ! Element Attributes
+
+  modalDiv.classList.add('modal-div-logged-in');
+  mainContent.classList.add('main-content-logged-in');
+  sideBar.classList.add('sidebar-logged-in');
+  sideButtonContainer.classList.add('sidebar-button-container');
+  toggleSidebarButton.classList.add('toggle-sidebar-button');
+  toggleSidebarButton.onclick = toggleSidebar;
+  userInfoButton.classList.add('sidebar-buttons');
+  homeButton.classList.add('sidebar-buttons');
+  addIssueButton.classList.add('sidebar-buttons');
+  allIssuesButton.classList.add('sidebar-buttons');
+
+  // ! Page Layout
+
+  sideButtonContainer.append(
+    userInfoButton,
+    homeButton,
+    addIssueButton,
+    allIssuesButton
+  );
+  sideBar.appendChild(sideButtonContainer);
+  mainContent.append();
+  body.append(sideBar, mainContent);
+
+  showLoggedInPage();
+
+  // ! End of function
+};
+
+const checkInputValues = () => {
+  if (emailInput.value !== '' && passwordInput.value !== '') {
+    return;
+  } else {
+    alert('Please type in your valid email and password to login.');
+  }
+};
+
+const loginHandler = () => {
+  checkInputValues();
   return;
 };
 
@@ -221,7 +329,7 @@ const forgotYourPasswordHandler = () => {
 };
 
 const loginAsGuestHandler = () => {
-  return;
+  loginAsGuest();
 };
 
 const togglePasswordVisibility = () => {
@@ -264,7 +372,7 @@ passwordVisibilityCheckbox.onclick = togglePasswordVisibility;
 passwordVisibilityCheckboxLabel.textContent = 'show password';
 buttonContainer.classList.add('button-container');
 loginButton.classList.add('login-button');
-loginButton.textContent = 'Login';
+loginButton.innerHTML = `Login<i class="fas fa-sign-in-alt"></i>`;
 createAccountModalButton.classList.add('create-account-modal-button');
 createAccountModalButton.textContent = 'Create account';
 forgotYourPasswordButton.classList.add('forgot-your-password-button');
@@ -272,7 +380,7 @@ forgotYourPasswordButton.textContent = 'Forgot your password?';
 loginAsGuestButton.classList.add('login-as-guest-button');
 loginAsGuestButton.textContent = 'Login as Guest';
 
-// ! Page Layout
+// ! Home Page Layout
 
 emailContainer.append(emailLabel, emailInput);
 passwordVisibilityCheckboxContainer.append(
