@@ -305,8 +305,13 @@ body {
 }
 
 .sidebar-logged-in {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: 38.5rem;
+  bottom: 7rem;
   height: 100vh;
-  width: 3rem;
+  width: 10rem;
   background-color: rgb(75, 75, 255);
 }
 
@@ -320,9 +325,15 @@ body {
 }
 
 .alert {
+  position: absolute;
+  top: 1rem;
   padding: 20px;
+  height: 60px;
+  width: 400px;
   background-color: green;
   color: white;
+  /* animation: animatetop;
+  animation-duration: 0.4s; */
 }
 
 .close-alert-button {
@@ -343,6 +354,17 @@ body {
   to {
     top: 0;
     opacity: 1;
+  }
+}
+
+@keyframes animateFromTop {
+  from {
+    top: 0;
+    opacity: 1;
+  }
+  to {
+    top: -400px;
+    opacity: 0;
   }
 }
 

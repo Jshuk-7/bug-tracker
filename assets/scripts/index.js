@@ -229,24 +229,6 @@ const forgotYourPasswordModal = () => {
   // ! End of function
 };
 
-const loginAlert = () => {
-  const alertContainer = document.createElement('div');
-  const closeAlertButton = document.createElement('span');
-
-  alertContainer.classList.add('alert');
-  alertContainer.textContent = 'Successfully Logged In...';
-  closeAlertButton.classList.add('close-alert-button');
-  closeAlertButton.textContent = '&times:';
-  closeAlertButton.onclick = alertContainer.style.display = 'none';
-  alertContainer.appendChild(closeAlertButton);
-  body.append(alertContainer);
-  const task = async () => {
-    await new Promise((r) => setTimeout(r, 5000));
-    body.remove(alertContainer);
-  };
-  task();
-};
-
 const loginAsGuest = () => {
   // ! Login As Guest Global Variables
 
@@ -262,14 +244,53 @@ const loginAsGuest = () => {
 
   // ! Functions
 
-  const showLoggedInPage = () => {
-    loginContainer.style['display'] = 'none';
-    const task = async () => {
-      await new Promise((r) => setTimeout(r, 3000));
-      body.classList.remove('background-color');
+  const loginAlert = () => {
+    const alertContainer = document.createElement('div');
+    const closeAlertButton = document.createElement('span');
+
+    const closeAlert = () => {
+      alertContainer.style['animation'] = 'animateFromTop';
+      alertContainer.style['animation-duration'] = '0.4s';
+      const removeAlertContainer = async () => {
+        await new Promise((r) => setTimeout(r, 400));
+        alertContainer.style.display = 'none';
+      };
+      removeAlertContainer();
     };
 
+    alertContainer.classList.add('alert');
+    alertContainer.textContent = 'Successfully Logged In As Guest...';
+    alertContainer.style['animation'] = 'animatetop';
+    alertContainer.style['animation-duration'] = '0.4s';
+    closeAlertButton.classList.add('close-alert-button');
+    closeAlertButton.onclick = closeAlert;
+    closeAlertButton.innerHTML = '&times';
+    alertContainer.appendChild(closeAlertButton);
+    body.append(alertContainer);
+    const task = async () => {
+      await new Promise((r) => setTimeout(r, 15000));
+      alertContainer.remove();
+    };
+    task();
+  };
+
+  const showLoggedInPage = () => {
+    loginContainer.style['display'] = 'none';
     loginAlert();
+    const task = async () => {
+      await new Promise((r) => setTimeout(r, 5000));
+      body.classList.remove('background-color');
+      sideButtonContainer.append(
+        toggleSidebarButton,
+        userInfoButton,
+        homeButton,
+        addIssueButton,
+        allIssuesButton
+      );
+      sideBar.append(sideButtonContainer);
+      mainContent.append('hello');
+      body.append(sideBar, mainContent);
+    };
     task();
   };
 
@@ -285,22 +306,17 @@ const loginAsGuest = () => {
   sideButtonContainer.classList.add('sidebar-button-container');
   toggleSidebarButton.classList.add('toggle-sidebar-button');
   toggleSidebarButton.onclick = toggleSidebar;
+  toggleSidebarButton.innerHTML = `<i class="fas fa-align-justify"></i>`;
   userInfoButton.classList.add('sidebar-buttons');
+  userInfoButton.innerHTML = `<i class="fas fa-user-tie"></i>`;
   homeButton.classList.add('sidebar-buttons');
+  homeButton.innerHTML = `<i class="fas fa-home"></i>`;
   addIssueButton.classList.add('sidebar-buttons');
+  addIssueButton.innerHTML = `<i class="fas fa-plus-circle"></i>`;
   allIssuesButton.classList.add('sidebar-buttons');
+  allIssuesButton.innerHTML = `<i class="fas fa-file-alt"></i>`;
 
   // ! Page Layout
-
-  sideButtonContainer.append(
-    userInfoButton,
-    homeButton,
-    addIssueButton,
-    allIssuesButton
-  );
-  sideBar.appendChild(sideButtonContainer);
-  mainContent.append();
-  body.append(sideBar, mainContent);
 
   showLoggedInPage();
 
