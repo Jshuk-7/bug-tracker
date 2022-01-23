@@ -234,13 +234,21 @@ const loginAsGuest = () => {
 
   const modalDiv = document.createElement('div');
   const mainContent = document.createElement('div');
-  const sideBar = document.createElement('div');
+  const sideBar = document.createElement('ul');
   const sideButtonContainer = document.createElement('div');
   const toggleSidebarButton = document.createElement('button');
+  const userInfoContainer = document.createElement('li');
   const userInfoButton = document.createElement('button');
+  const userInfoLabel = document.createElement('label');
+  const homeContainer = document.createElement('li');
   const homeButton = document.createElement('button');
+  const homeLabel = document.createElement('label');
+  const addIssueContainer = document.createElement('li');
   const addIssueButton = document.createElement('button');
+  const addIssueLabel = document.createElement('label');
+  const allIssuesContainer = document.createElement('li');
   const allIssuesButton = document.createElement('button');
+  const allIssuesLabel = document.createElement('label');
 
   // ! Functions
 
@@ -280,15 +288,19 @@ const loginAsGuest = () => {
     const task = async () => {
       await new Promise((r) => setTimeout(r, 5000));
       body.classList.remove('background-color');
+      userInfoContainer.append(userInfoButton, userInfoLabel);
+      homeContainer.append(homeButton, homeLabel);
+      addIssueContainer.append(addIssueButton, addIssueLabel);
+      allIssuesContainer.append(allIssuesButton, allIssuesLabel);
       sideButtonContainer.append(
         toggleSidebarButton,
-        userInfoButton,
-        homeButton,
-        addIssueButton,
-        allIssuesButton
+        userInfoContainer,
+        homeContainer,
+        addIssueContainer,
+        allIssuesContainer
       );
       sideBar.append(sideButtonContainer);
-      mainContent.append('hello');
+      mainContent.append();
       body.append(sideBar, mainContent);
     };
     task();
@@ -296,25 +308,54 @@ const loginAsGuest = () => {
 
   const toggleSidebar = () => {
     sideBar.classList.toggle('small-width');
+    if (sideBar.classList.contains('small-width')) {
+      toggleSidebarButton.style['position'] = 'relative';
+      toggleSidebarButton.style['left'] = '0.5rem';
+      toggleSidebarButton.innerHTML = `<i class="fas fa-chevron-circle-right"></i>`;
+      sideBar.style['position'] = 'relative';
+      sideBar.style['right'] = '43.5rem';
+      userInfoLabel.remove();
+      homeLabel.remove();
+      addIssueLabel.remove();
+      allIssuesLabel.remove();
+    } else {
+      toggleSidebarButton.style['position'] = 'relative';
+      toggleSidebarButton.style['left'] = '10rem';
+      toggleSidebarButton.innerHTML = `<i class="fas fa-align-justify"></i>`;
+      sideBar.style['position'] = 'relative';
+      sideBar.style['right'] = '38.5rem';
+      userInfoContainer.append(userInfoLabel);
+      homeContainer.append(homeLabel);
+      addIssueContainer.append(addIssueLabel);
+      allIssuesContainer.append(allIssuesLabel);
+    }
   };
 
   // ! Element Attributes
 
   modalDiv.classList.add('modal-div-logged-in');
   mainContent.classList.add('main-content-logged-in');
-  sideBar.classList.add('sidebar-logged-in');
-  sideButtonContainer.classList.add('sidebar-button-container');
+  sideBar.classList.add('sidebar-menu');
+  sideButtonContainer.classList.add('sidebar-menu-button-container');
   toggleSidebarButton.classList.add('toggle-sidebar-button');
   toggleSidebarButton.onclick = toggleSidebar;
   toggleSidebarButton.innerHTML = `<i class="fas fa-align-justify"></i>`;
+  userInfoContainer.classList.add('user-info-container');
   userInfoButton.classList.add('sidebar-buttons');
   userInfoButton.innerHTML = `<i class="fas fa-user-tie"></i>`;
+  userInfoLabel.innerHTML = `Hello ${'userName'}`;
+  homeContainer.classList.add('home-container');
   homeButton.classList.add('sidebar-buttons');
   homeButton.innerHTML = `<i class="fas fa-home"></i>`;
+  homeLabel.innerHTML = `Home`;
+  addIssueContainer.classList.add('add-issue-container');
   addIssueButton.classList.add('sidebar-buttons');
   addIssueButton.innerHTML = `<i class="fas fa-plus-circle"></i>`;
+  addIssueLabel.innerHTML = `Add Issue`;
+  allIssuesContainer.classList.add('all-issues-container');
   allIssuesButton.classList.add('sidebar-buttons');
   allIssuesButton.innerHTML = `<i class="fas fa-file-alt"></i>`;
+  allIssuesLabel.innerHTML = `All Issues`;
 
   // ! Page Layout
 
