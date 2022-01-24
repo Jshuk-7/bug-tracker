@@ -311,6 +311,89 @@ body {
 .main-content-logged-in {
 }
 
+.page-header-container {
+  position: absolute;
+  top: 0;
+  left: 13rem;
+  height: 4rem;
+  width: 1232px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.page-header-container h1 {
+  margin: 0.6rem 0 0.6rem 1.9rem;
+}
+
+.page-name {
+  position: absolute;
+  top: 5rem;
+  left: 15rem;
+  font-weight: bold;
+}
+
+.status-container {
+  position: absolute;
+  top: 8rem;
+  height: 200px;
+  width: 450px;
+  background-color: white;
+}
+
+.status-container h4 {
+  position: relative;
+  bottom: 1.5rem;
+}
+
+.status-info-container {
+  height: 200px;
+  position: relative;
+  bottom: 1.1rem;
+  border: 1px solid gray;
+}
+
+.pie-chart {
+  position: absolute;
+  height: 180px;
+  width: 180px;
+  margin: 0.5rem 0 0 3rem;
+  border-radius: 50%;
+  background-color: lightgray;
+}
+
+.open-ticket-container,
+.in-progress-ticket-container,
+.resolved-ticket-container,
+.closed-ticket-container {
+  margin: 1.5rem 0 0 17rem;
+}
+
+.open-ticket-amount,
+.in-progress-ticket-amount,
+.resolved-ticket-amount,
+.closed-ticket-amount {
+  margin: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border-radius: 1rem;
+  color: white;
+}
+
+.open-ticket-amount {
+  background-color: rgb(223, 19, 19);
+}
+
+.in-progress-ticket-amount {
+  background-color: rgb(75, 75, 255);
+}
+
+.resolved-ticket-amount {
+  background-color: green;
+}
+
+.closed-ticket-amount {
+  background-color: rgb(202, 202, 38);
+}
+
 .sidebar-menu {
   display: flex;
   flex-direction: column;
@@ -390,8 +473,10 @@ body {
   padding: 20px;
   height: 60px;
   width: 400px;
-  background-color: green;
+  background-color: rgb(10, 146, 10);
+  border: 1px solid black;
   color: white;
+  z-index: 1;
 }
 
 .close-alert-button {

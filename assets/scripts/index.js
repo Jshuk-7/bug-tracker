@@ -234,6 +234,29 @@ const loginAsGuest = () => {
 
   const modalDiv = document.createElement('div');
   const mainContent = document.createElement('div');
+
+  const pageHeaderContainer = document.createElement('div');
+  const loginPageHeading = document.createElement('h1');
+
+  const pageName = document.createElement('h4');
+
+  const statusContainer = document.createElement('div');
+  const statusHeading = document.createElement('h4');
+  const statusInfoContainer = document.createElement('div');
+  const pieChart = document.createElement('div');
+  const openTicketContainer = document.createElement('div');
+  const openTicketAmount = document.createElement('span');
+  const openTicketLabel = document.createElement('span');
+  const inProgressTicketContainer = document.createElement('div');
+  const inProgressTicketAmount = document.createElement('span');
+  const inProgressTicketLabel = document.createElement('span');
+  const resolvedTicketContainer = document.createElement('div');
+  const resolvedTicketAmount = document.createElement('span');
+  const resolvedTicketLabel = document.createElement('span');
+  const closedTicketContainer = document.createElement('div');
+  const closedTicketAmount = document.createElement('span');
+  const closedTicketLabel = document.createElement('span');
+
   const sideBar = document.createElement('ul');
   const sideButtonContainer = document.createElement('div');
   const toggleSidebarButton = document.createElement('button');
@@ -287,7 +310,27 @@ const loginAsGuest = () => {
     loginAlert();
     const task = async () => {
       await new Promise((r) => setTimeout(r, 5000));
+
+      // ! Page Layout
+
       body.classList.remove('background-color');
+      body.style['background-color'] = 'lightgray';
+      pageHeaderContainer.append(loginPageHeading);
+      openTicketContainer.append(openTicketAmount, openTicketLabel);
+      inProgressTicketContainer.append(
+        inProgressTicketAmount,
+        inProgressTicketLabel
+      );
+      resolvedTicketContainer.append(resolvedTicketAmount, resolvedTicketLabel);
+      closedTicketContainer.append(closedTicketAmount, closedTicketLabel);
+      statusInfoContainer.append(
+        pieChart,
+        openTicketContainer,
+        inProgressTicketContainer,
+        resolvedTicketContainer,
+        closedTicketContainer
+      );
+      statusContainer.append(statusHeading, statusInfoContainer);
       userInfoContainer.append(userInfoButton, userInfoLabel);
       homeContainer.append(homeButton, homeLabel);
       addIssueContainer.append(addIssueButton, addIssueLabel);
@@ -300,7 +343,7 @@ const loginAsGuest = () => {
         allIssuesContainer
       );
       sideBar.append(sideButtonContainer);
-      mainContent.append();
+      mainContent.append(pageHeaderContainer, pageName, statusContainer);
       body.append(sideBar, mainContent);
     };
     task();
@@ -309,7 +352,9 @@ const loginAsGuest = () => {
   const toggleSidebar = () => {
     sideBar.classList.toggle('small-width');
     if (sideBar.classList.contains('small-width')) {
-      toggleSidebarButton.style['position'] = 'relative';
+      pageHeaderContainer.style['left'] = '3rem';
+      pageHeaderContainer.style['width'] = '1392px';
+      pageName.style['left'] = '5rem';
       toggleSidebarButton.style['left'] = '0.5rem';
       toggleSidebarButton.innerHTML = `<i class="fas fa-chevron-circle-right"></i>`;
       sideBar.style['position'] = 'relative';
@@ -319,7 +364,9 @@ const loginAsGuest = () => {
       addIssueLabel.remove();
       allIssuesLabel.remove();
     } else {
-      toggleSidebarButton.style['position'] = 'relative';
+      pageHeaderContainer.style['left'] = '13rem';
+      pageHeaderContainer.style['width'] = '1232px';
+      pageName.style['left'] = '15rem';
       toggleSidebarButton.style['left'] = '10rem';
       toggleSidebarButton.innerHTML = `<i class="fas fa-align-justify"></i>`;
       sideBar.style['position'] = 'relative';
@@ -331,10 +378,41 @@ const loginAsGuest = () => {
     }
   };
 
+  // ! Event Listeners
+
+  userInfoButton.addEventListener('click');
+  homeButton.addEventListener('click');
+  addIssueButton.addEventListener('click');
+  allIssuesButton.addEventListener('click');
+
   // ! Element Attributes
 
   modalDiv.classList.add('modal-div-logged-in');
   mainContent.classList.add('main-content-logged-in');
+  pageHeaderContainer.classList.add('page-header-container');
+  loginPageHeading.innerHTML = `<i class="fas fa-bug"></i> Bug Tracker`;
+  pageName.innerHTML = `Home`;
+  pageName.classList.add('page-name');
+  statusContainer.classList.add('status-container');
+  statusHeading.textContent = 'Status';
+  statusInfoContainer.classList.add('status-info-container');
+  pieChart.classList.add('pie-chart');
+  openTicketContainer.classList.add('open-ticket-container');
+  openTicketAmount.classList.add('open-ticket-amount');
+  openTicketAmount.textContent = '0';
+  openTicketLabel.textContent = 'Open';
+  inProgressTicketContainer.classList.add('in-progress-ticket-container');
+  inProgressTicketAmount.classList.add('in-progress-ticket-amount');
+  inProgressTicketAmount.textContent = '0';
+  inProgressTicketLabel.textContent = 'In Progress';
+  resolvedTicketContainer.classList.add('resolved-ticket-container');
+  resolvedTicketAmount.classList.add('resolved-ticket-amount');
+  resolvedTicketAmount.textContent = '0';
+  resolvedTicketLabel.textContent = 'Resolved';
+  closedTicketContainer.classList.add('closed-ticket-container');
+  closedTicketAmount.classList.add('closed-ticket-amount');
+  closedTicketAmount.textContent = '0';
+  closedTicketLabel.textContent = 'Closed';
   sideBar.classList.add('sidebar-menu');
   sideButtonContainer.classList.add('sidebar-menu-button-container');
   toggleSidebarButton.classList.add('toggle-sidebar-button');
@@ -356,8 +434,6 @@ const loginAsGuest = () => {
   allIssuesButton.classList.add('sidebar-buttons');
   allIssuesButton.innerHTML = `<i class="fas fa-file-alt"></i>`;
   allIssuesLabel.innerHTML = `All Issues`;
-
-  // ! Page Layout
 
   showLoggedInPage();
 
