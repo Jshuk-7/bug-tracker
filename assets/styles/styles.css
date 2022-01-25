@@ -332,6 +332,8 @@ body {
   font-weight: bold;
 }
 
+/* ! Status Container */
+
 .status-container {
   position: absolute;
   top: 8rem;
@@ -394,13 +396,57 @@ body {
   background-color: rgb(202, 202, 38);
 }
 
+/* ! Category Container */
+
+.category-container {
+  position: absolute;
+  top: 26rem;
+  height: 275px;
+  width: 450px;
+  background-color: white;
+}
+
+.category-container .category-heading {
+  position: relative;
+  bottom: 1.5rem;
+}
+
+.category-info-container {
+  height: 275px;
+  position: relative;
+  bottom: 1.1rem;
+  border: 1px solid gray;
+}
+
+.front-end-container hr,
+.back-end-container hr {
+  border: 1px solid black;
+  width: 28rem;
+  position: relative;
+  right: 1.25rem;
+  margin: 0.25rem;
+}
+
+.front-end-container,
+.back-end-container,
+.design-container {
+  margin: 1rem;
+}
+
+.front-end-container progress,
+.back-end-container progress,
+.design-container progress {
+  width: 390px;
+  height: 3rem;
+}
+
 .sidebar-menu {
   display: flex;
   flex-direction: column;
   position: relative;
   right: 38.5rem;
   bottom: 7rem;
-  height: 100%;
+  height: 700px;
   width: 13rem;
   background-color: rgb(75, 75, 255);
 }

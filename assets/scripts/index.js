@@ -237,7 +237,6 @@ const loginAsGuest = () => {
 
   const pageHeaderContainer = document.createElement('div');
   const loginPageHeading = document.createElement('h1');
-
   const pageName = document.createElement('h4');
 
   const statusContainer = document.createElement('div');
@@ -256,6 +255,21 @@ const loginAsGuest = () => {
   const closedTicketContainer = document.createElement('div');
   const closedTicketAmount = document.createElement('span');
   const closedTicketLabel = document.createElement('span');
+
+  const categoryContainer = document.createElement('div');
+  const categoryHeading = document.createElement('h4');
+  const categoryInfoContainer = document.createElement('div');
+  const frontEndContainer = document.createElement('div');
+  const frontEndHeader = document.createElement('h4');
+  const frontEndProgressbar = document.createElement('progress');
+  const horizontalRule1 = document.createElement('hr');
+  const backEndContainer = document.createElement('div');
+  const backEndHeader = document.createElement('h4');
+  const backEndProgressBar = document.createElement('progress');
+  const horizontalRule2 = document.createElement('hr');
+  const designContainer = document.createElement('div');
+  const designHeader = document.createElement('h4');
+  const designProgressBar = document.createElement('progress');
 
   const sideBar = document.createElement('ul');
   const sideButtonContainer = document.createElement('div');
@@ -330,7 +344,24 @@ const loginAsGuest = () => {
         resolvedTicketContainer,
         closedTicketContainer
       );
+      frontEndContainer.append(
+        frontEndHeader,
+        frontEndProgressbar,
+        horizontalRule1
+      );
+      backEndContainer.append(
+        backEndHeader,
+        backEndProgressBar,
+        horizontalRule2
+      );
+      designContainer.append(designHeader, designProgressBar);
+      categoryInfoContainer.append(
+        frontEndContainer,
+        backEndContainer,
+        designContainer
+      );
       statusContainer.append(statusHeading, statusInfoContainer);
+      categoryContainer.append(categoryHeading, categoryInfoContainer);
       userInfoContainer.append(userInfoButton, userInfoLabel);
       homeContainer.append(homeButton, homeLabel);
       addIssueContainer.append(addIssueButton, addIssueLabel);
@@ -343,7 +374,12 @@ const loginAsGuest = () => {
         allIssuesContainer
       );
       sideBar.append(sideButtonContainer);
-      mainContent.append(pageHeaderContainer, pageName, statusContainer);
+      mainContent.append(
+        pageHeaderContainer,
+        pageName,
+        statusContainer,
+        categoryContainer
+      );
       body.append(sideBar, mainContent);
     };
     task();
@@ -380,10 +416,10 @@ const loginAsGuest = () => {
 
   // ! Event Listeners
 
-  userInfoButton.addEventListener('click');
+  /* userInfoButton.addEventListener('click');
   homeButton.addEventListener('click');
   addIssueButton.addEventListener('click');
-  allIssuesButton.addEventListener('click');
+  allIssuesButton.addEventListener('click'); */
 
   // ! Element Attributes
 
@@ -393,6 +429,7 @@ const loginAsGuest = () => {
   loginPageHeading.innerHTML = `<i class="fas fa-bug"></i> Bug Tracker`;
   pageName.innerHTML = `Home`;
   pageName.classList.add('page-name');
+
   statusContainer.classList.add('status-container');
   statusHeading.textContent = 'Status';
   statusInfoContainer.classList.add('status-info-container');
@@ -413,6 +450,21 @@ const loginAsGuest = () => {
   closedTicketAmount.classList.add('closed-ticket-amount');
   closedTicketAmount.textContent = '0';
   closedTicketLabel.textContent = 'Closed';
+
+  categoryContainer.classList.add('category-container');
+  categoryHeading.textContent = 'Category';
+  categoryHeading.classList.add('category-heading');
+  categoryInfoContainer.classList.add('category-info-container');
+  frontEndContainer.classList.add('front-end-container');
+  frontEndHeader.textContent = 'Front End';
+  frontEndProgressbar.value = 0;
+  backEndContainer.classList.add('back-end-container');
+  backEndHeader.textContent = 'Back End';
+  backEndProgressBar.value = 0;
+  designContainer.classList.add('design-container');
+  designHeader.textContent = 'Design';
+  designProgressBar.value = 0;
+
   sideBar.classList.add('sidebar-menu');
   sideButtonContainer.classList.add('sidebar-menu-button-container');
   toggleSidebarButton.classList.add('toggle-sidebar-button');
